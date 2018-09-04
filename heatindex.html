@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	    <title>Heat Index Calculator</title>
+	    <link rel="stylesheet" href="style.css">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    </head>
+    <body>
+
+        <h1>Heat Index Calculator</h1>
+
+        <p> 
+		    Please enter a temperature in degrees Fahrenheit, 
+		    as well as the relative humidity as a percentage between 0 and 100. 
+		    This simple web app will compute the heat index.
+		</p>
+		
+		<form onsubmit = "return false;">
+		    <label>
+				Temperature (F&deg;)
+				<input type = "number" id = "temp" value = "0"/>
+		    </label>
+			
+            </br>
+            </br>
+			
+            <label>
+			    Humidity (0-100)
+                <input type = "number" id = "hum" value = "0"/>
+            </label>
+			
+			</br>
+			</br>
+			
+			<button onclick = "computeHeatIndex();">Compute</button>
+			<output id = "result"></output>
+		</form>
+    </body>
+</html>
+
+<script>
+    function computeHeatIndex()
+	{
+	    var input1 = document.querySelector('#temp');
+		var temp = input1.value;
+		var input2 = document.querySelector('#hum');
+		var relhum = input2.value;
+		var output = document.querySelector('#result');
+	    var index = -42.379 + 2.04901523 * temp + 10.14333127 * relhum - 0.22475541 * temp * relhum - 0.00683783 * temp^2 - 0.05481717 * relhum^2 + 0.00122874 * temp^2 * relhum + 0.00085282 * temp * relhum^2 - 0.00000199 * temp2 * relhum^2;
+	
+	    output.innerHTML = 'The heat index based on that input is ' + index + '.'
+	}
+
+</script>
